@@ -131,4 +131,21 @@ class Program
 
         Console.ResetColor();
     }
+
+    static void ShowTasks(TaskManager manager)
+    {
+        var tasks = manager.GetAllTasks();
+
+        for (int i = 0; i < tasks.Count; i++)
+        {
+            if (tasks[i].IsCompleted)
+                Console.ForegroundColor = ConsoleColor.Green;
+            else
+                Console.ForegroundColor = ConsoleColor.Red;
+
+            Console.WriteLine($"{i + 1}. {tasks[i].Name} - {(tasks[i].IsCompleted ? "Завършена" : "Незавършена")}");
+        }
+
+        Console.ResetColor();
+    }
 }
